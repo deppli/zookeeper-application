@@ -53,7 +53,7 @@ public class ZooKeeperWriteConfigure implements WriteConfigure {
                         Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             }
         } catch (Exception ex) {
-            throw new ZkException(ex.getMessage());
+            throw new ZkException(ex);
         }
     }
 
@@ -83,7 +83,7 @@ public class ZooKeeperWriteConfigure implements WriteConfigure {
             }
             return true;
         } catch (Exception ex) {
-            throw new ZkException(ex.getMessage());
+            throw new ZkException(ex);
         }
     }
 
@@ -105,7 +105,7 @@ public class ZooKeeperWriteConfigure implements WriteConfigure {
                 zk.setData(node,value.getBytes("utf-8"),-1);
             }
         } catch (Exception ex) {
-            throw new ZkException(ex.getMessage());
+            throw new ZkException(ex);
         }
 
         return true;

@@ -55,7 +55,7 @@ public class ZooKeeperReadConfigure implements ReadConfigure {
 			rootLocation = zkConfig.getRootLoaction() ;
 			watchRoot();
 		} catch (Exception ex) {
-			throw new ZkException(ex.getMessage());
+			throw new ZkException(ex);
 		}
 	}
 
@@ -84,7 +84,7 @@ public class ZooKeeperReadConfigure implements ReadConfigure {
 						try {
 							watchNode();
 						} catch (ZkException e) {
-							logger.error("", e);
+							logger.error("监听节点发生异常", e);
 						}
 					}
 
@@ -96,7 +96,7 @@ public class ZooKeeperReadConfigure implements ReadConfigure {
 				watchNode();
 			}
 		} catch (Exception ex) {
-			throw new ZkException(ex.getMessage());
+			throw new ZkException(ex);
 		}
 	}
 
@@ -109,7 +109,7 @@ public class ZooKeeperReadConfigure implements ReadConfigure {
 					try {
 						watchNode();
 					} catch (ZkException e) {
-						logger.error("", e);
+						logger.error("监听节点发生异常", e);
 					}
 				}
 
@@ -117,19 +117,18 @@ public class ZooKeeperReadConfigure implements ReadConfigure {
 			
 			if (!CollectionUtils.isEmpty(znodes)) {
 				for (String znode : znodes) {
-					logger.info(znode);
-					watchData(rootLocation+"/"+znode);
+					watchData(znode);
 				}
 
 			}
 		} catch (Exception ex) {
-			throw new ZkException(ex.getMessage());
+			throw new ZkException(ex);
 		}
 	}
 
 	public void watchData(String znode) throws ZkException {
 		try {
-			byte[] bytes = zk.getData(znode, new Watcher() {
+			byte[] bytes = zk.getData(rootLocation+"/"+znode, new Watcher() {
 
 				@Override
 				public void process(WatchedEvent paramWatchedEvent) {
@@ -137,17 +136,18 @@ public class ZooKeeperReadConfigure implements ReadConfigure {
 						try {
 							watchData(paramWatchedEvent.getPath());
 						} catch (Exception ex) {
-							logger.error("", ex);
+							logger.error("监听数据发生异常", ex);
 						}
 					}
 
 				}
 
 			}, null);		
-			logger.info("znode:"+znode+",data:"+new String(bytes,"utf-8"));
+			logger.info("节点 znode:"+znode+",data:"+new String(bytes,"utf-8"));
+			znode = znode.substring(0, znode.length()-1);
 			cache.put(znode,new String(bytes,"utf-8"));
 		} catch (Exception ex) {
-			throw new ZkException(ex.getMessage());
+			throw new ZkException(ex);
 		}
 	}
 

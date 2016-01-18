@@ -9,4 +9,7 @@ public class ZkException extends Exception{
 		super(message);
 	}
 	
+	public ZkException(Exception exception){
+		super(exception);
+	}
 }
