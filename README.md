@@ -4,4 +4,4 @@
   2.  分布式rpc
   3.  分布式存储
 
-目前还在codeing中
+目前还在coding中
