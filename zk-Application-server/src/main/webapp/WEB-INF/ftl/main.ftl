@@ -293,6 +293,7 @@ desired effect
             ajax: {
                 url: "/zk-Application-server/test.do"
             },
+            ordering: false,
             serverSide: true,
             columns: [
                 {"data": "name"},
@@ -338,7 +339,7 @@ desired effect
             "t" +
             "<'row'<'col-xs-6'i><'col-xs-6'p>>",
             initComplete: function () {
-                $("#mytool").append('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">添加</button>');
+                $("#mytool").append('<button type="button" class="btn btn-default btn-sm" onclick="addOne()">添加</button>');
             }
 
         });
@@ -349,7 +350,12 @@ desired effect
     });
 
 
-
+	function addOne(){
+		clear();
+		$("#myModalLabel").text("新增");
+		$("#myModal").modal("show");
+	}
+	
 
     /**
      * 清除
@@ -361,7 +367,6 @@ desired effect
         $("#start_date").val("");
         $("#office").val("");
         $("#extn").val("");
-        editFlag = false;
     }
 
     /**
@@ -419,8 +424,6 @@ desired effect
             }
         });
     }
-
-
     /**
      * 删除数据
      * @param name

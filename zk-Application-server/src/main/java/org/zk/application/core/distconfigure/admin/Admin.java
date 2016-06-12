@@ -1,4 +1,4 @@
-package test.ctro;
+package org.zk.application.core.distconfigure.admin;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -20,9 +20,14 @@ import org.zk.application.core.distconfigure.impl.ZooKeeperWriteConfigure;
 
 import com.alibaba.fastjson.JSON;
 
+import freemarker.ext.beans.BeansWrapper;
+import freemarker.template.TemplateHashModel;
+import freemarker.template.TemplateModelException;
+import org.zk.application.core.distconfigure.service.UserService;
+
 @Controller
-public class Hello {
-	static final Logger logger = Logger.getLogger(Hello.class);
+public class Admin {
+	static final Logger logger = Logger.getLogger(Admin.class);
 
 	@Resource
 	public ZooKeeperReadConfigure zooKeeperReadConfigure;
@@ -30,11 +35,24 @@ public class Hello {
 	@Resource
 	public ZooKeeperWriteConfigure zooKeeperWriteConfigure;
 
-	@RequestMapping("/begin")
-	public String hello(ModelMap map) {
-		map.put("hello", "hello");
+	@Resource
+	public UserService userService;
+
+	@RequestMapping("/toLogin")
+	public String toLogin(){
+
+
+		return "toLogin";
+	}
+	
+	
+	@RequestMapping("/login")
+	public String login(HttpServletRequest httpServletRequest, ModelMap map){
+		
+		
 		return "main";
 	}
+	
 
 	@RequestMapping("/write")
 	public String write(HttpServletRequest httpServletRequest, ModelMap map) {
@@ -52,14 +70,31 @@ public class Hello {
 
 	@RequestMapping("/read")
 	public String read(HttpServletRequest httpServletRequest, ModelMap map) {
-		Map<String, String> configureMap = zooKeeperReadConfigure
-				.readAllConfigure();
-		logger.info(configureMap.toString());
-		map.put("configureMap", configureMap);
+		//Map<String, String> configureMap = zooKeeperReadConfigure
+		//		.readAllConfigure();
+		//logger.info(configureMap.toString());
+		//map.put("configureMap", configureMap);
+		map.put("one", "one1");
+		map.put("two", "two1");
+		
+		
+		//freemarker调用java静态方法
+		BeansWrapper wrapper = BeansWrapper.getDefaultInstance();  
+	    TemplateHashModel staticModels = wrapper.getStaticModels();  
+	    TemplateHashModel fileStatics = null;
+	    try {
+	    	fileStatics = (TemplateHashModel) staticModels.get("org.zk.application.core.distconfigure.admin.Admin");
+		} catch (TemplateModelException e) {
+			e.printStackTrace();
+		}
+	    map.put("Admin", fileStatics);
 		return "read";
 
 	}
 
+	public static String test(String string){
+		return string;
+	}
 	@RequestMapping("/test")
 	public void test(HttpServletRequest request,HttpServletResponse response ){
 		//获取请求次数

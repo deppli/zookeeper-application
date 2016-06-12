@@ -15,5 +15,10 @@
                 </#list>
          </#if>
      </table>
+     
+     <div title="${one}${two}">
+   		${Admin.test(one+two)} 
+     </div>
+     
 </body>
 </html>

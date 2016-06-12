@@ -34,7 +34,7 @@ public class ZooKeeperReadConfigure implements ReadConfigure {
 
 	private static final CountDownLatch latch = new CountDownLatch(1);
 
-	private ConcurrentHashMap<String, String> cache;
+	private final ConcurrentHashMap<String, String> cache = new ConcurrentHashMap<String, String>();
 
 	public void init() throws ZkException {
 		if (zkConfig == null) {
@@ -51,7 +51,6 @@ public class ZooKeeperReadConfigure implements ReadConfigure {
 						}
 					});
 			latch.await();
-			cache =  new ConcurrentHashMap<String, String>();
 			rootLocation = zkConfig.getRootLoaction() ;
 			watchRoot();
 		} catch (Exception ex) {
