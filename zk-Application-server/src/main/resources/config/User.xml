@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>   
+<!DOCTYPE mapper   
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+	<resultMap type="userinfo" id="userResultMap">
+		<result property="id" column="Id" />
+		<result property="email" column="Email" />
+		<result property="loginPasswd" column="LoginPasswd" />
+		<result property="MD5" column="MD5" />
+	</resultMap>
+	
+	<select id="getUser" resultType="userinfo">
+		select * from User
+	</select>
+
+	<insert id="add" parameterType="userinfo" useGeneratedKeys="true" keyProperty="Id">
+		insert into User(Email,LoginPasswd) values (#{email},#{loginPasswd})
+	</insert>
+
+</mapper>
+        
+        
+        
