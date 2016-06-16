@@ -291,7 +291,7 @@ desired effect
 
         table = $('#example').dataTable({
             ajax: {
-                url: "/zk-Application-server/test.do"
+                url: "/test.do"
             },
             ordering: false,
             serverSide: true,

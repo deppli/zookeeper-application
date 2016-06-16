@@ -8,14 +8,9 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-	<!-- 包含annotation-config的作用 -->
-	<context:component-scan base-package="org.zk.application.core.distconfigure" />
+	<!-- 包含annotation-config的作用,不扫描service的包,否则事务失效-->
+	<context:component-scan base-package="org.zk.application.core.distconfigure.admin" />
 	<context:annotation-config />
-	<bean id="handlerAdapter"
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-
-	<bean id="handlerMapping"
-		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
 
 
 

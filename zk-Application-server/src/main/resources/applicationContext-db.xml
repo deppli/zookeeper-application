@@ -51,8 +51,6 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<!--使用事务的bean,不能使用@service等注解的方式-->
-	<bean id="userService" class="org.zk.application.core.distconfigure.service.UserService"/>
 
 
 	<aop:config>

@@ -6,17 +6,18 @@
 <mapper namespace="user">
 	<resultMap type="userinfo" id="userResultMap">
 		<result property="id" column="Id" />
-		<result property="email" column="Email" />
+		<result property="addTime" column="AddTime" />
+		<result property="updateTime" column="UpdateTime" />
+		<result property="loginName" column="LoginName" />
 		<result property="loginPasswd" column="LoginPasswd" />
-		<result property="MD5" column="MD5" />
 	</resultMap>
 	
-	<select id="getUser" resultType="userinfo">
+	<select id="getAllUser" resultType="userinfo">
 		select * from User
 	</select>
 
 	<insert id="add" parameterType="userinfo" useGeneratedKeys="true" keyProperty="Id">
-		insert into User(Email,LoginPasswd) values (#{email},#{loginPasswd})
+		insert into User(AddTime,UpdateTime,LoginName,LoginPasswd) values (now(),now(),#{loginName},#{loginPasswd})
 	</insert>
 
 </mapper>

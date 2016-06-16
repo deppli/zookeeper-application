@@ -41,7 +41,6 @@ public class Admin {
 	@RequestMapping("/toLogin")
 	public String toLogin(){
 
-
 		return "toLogin";
 	}
 	
@@ -51,6 +50,12 @@ public class Admin {
 		
 		
 		return "main";
+	}
+
+	@RequestMapping("/toRegister")
+	public String toRegister(){
+
+		return "toRegister";
 	}
 	
 
