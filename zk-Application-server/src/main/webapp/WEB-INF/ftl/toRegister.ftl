@@ -7,15 +7,15 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="/plugins/iCheck/square/blue.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +35,7 @@
 
         <form action="register.do" method="post">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email" required>
+                <input  type="email" class="form-control" placeholder="Email" required>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
@@ -62,11 +62,11 @@
 <!-- /.register-box -->
 
 <!-- jQuery 2.1.4 -->
-<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(function () {
         $('input').iCheck({
@@ -75,12 +75,31 @@
             increaseArea: '20%' // optional
         });
 
+        $('input[type=email]').blur(function(){
+            var email = $('input[type=email]').val().trim();
+            var postData ={'email':email};
+            $.ajax({
+                url: "/ajax/loadUserByLoginName.do",
+                type:'post',
+                data: postData,
+                dataType:'json',
+                success: function(data){
+                    var flag = data.flag;
+                    if (flag == "false") {
+
+                    }
+                }
+            });
+        });
+
     });
     function check(){
         var passwd = $('#passwd').val().trim(),
             rePasswd = $('#repasswd').val().trim();
         if (passwd && rePasswd && passwd == rePasswd) {
             return true;
+        }else {
+
         }
         return false;
     }

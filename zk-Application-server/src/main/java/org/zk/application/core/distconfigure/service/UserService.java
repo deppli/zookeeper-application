@@ -16,5 +16,12 @@ public class UserService {
     private SqlSession sqlSession;
 
 
+    public int addUser(User user){
+        return  sqlSession.insert("user.addUser",user);
+    }
+
+    public User loadUserByLoginName(String loginName){
+        return sqlSession.selectOne("user.loadUserByLoginName",loginName);
+    }
 
 }

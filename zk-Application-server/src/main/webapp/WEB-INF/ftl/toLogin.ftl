@@ -60,7 +60,7 @@
     <!-- /.social-auth-links -->
 
     <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center" id="register">Register a new membership</a>
+    <a href="toRegister.do" class="text-center" id="register">Register a new membership</a>
 
   </div>
   <!-- /.login-box-body -->

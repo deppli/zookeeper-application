@@ -26,6 +26,7 @@ import freemarker.template.TemplateModelException;
 import org.zk.application.core.distconfigure.service.UserService;
 
 @Controller
+@RequestMapping("/admin")
 public class Admin {
 	static final Logger logger = Logger.getLogger(Admin.class);
 

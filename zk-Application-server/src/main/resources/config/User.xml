@@ -12,14 +12,29 @@
 		<result property="loginPasswd" column="LoginPasswd" />
 	</resultMap>
 	
-	<select id="getAllUser" resultType="userinfo">
-		select * from User
-	</select>
+	<sql id="allFields">
+		Id,
+		AddTime,
+		UpdateTime,
+		LoginName,
+		LoginPasswd
+	</sql>
 
-	<insert id="add" parameterType="userinfo" useGeneratedKeys="true" keyProperty="Id">
+
+	<insert id="addUser" parameterType="userinfo" useGeneratedKeys="true" keyProperty="Id">
 		insert into User(AddTime,UpdateTime,LoginName,LoginPasswd) values (now(),now(),#{loginName},#{loginPasswd})
 	</insert>
 
+	<select id="loadUserByLoginName" parameterType="string" resultType="userinfo">
+		SELECT
+			<include refid="allFields"/>
+		FROM
+			User
+		WHERE
+			<![CDATA[
+			LoginName = #{loginName}
+			]]>
+	</select>
 </mapper>
         
         
