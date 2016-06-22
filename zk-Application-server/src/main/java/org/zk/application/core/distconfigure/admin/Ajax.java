@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * Created by lishuhong on 16/6/16.
  */
-@Controller()
+@Controller
 @RequestMapping("/ajax")
 public class Ajax {
 
