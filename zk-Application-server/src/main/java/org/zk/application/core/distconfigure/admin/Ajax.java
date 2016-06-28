@@ -8,6 +8,7 @@ import org.zk.application.core.distconfigure.pojo.User;
 import org.zk.application.core.distconfigure.service.UserService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
@@ -23,7 +24,7 @@ public class Ajax {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/loadUserByLoginName")
+    @RequestMapping("/checkEmail")
     public void loadUserByLoginName(@RequestParam("email") String loginName, HttpServletResponse httpServletResponse) throws IOException {
         String flag = "true";
         User user = userService.loadUserByLoginName(loginName);
@@ -34,5 +35,10 @@ public class Ajax {
         result.put("flag",flag);
         String jsonResult = JSON.toJSONString(result);
         httpServletResponse.getWriter().write(jsonResult);
+    }
+    @RequestMapping("/register")
+    public void register(HttpServletRequest httpServletRequest,HttpServletResponse httpServletResponse){
+        String email = httpServletRequest.getParameter("email");
+
     }
 }

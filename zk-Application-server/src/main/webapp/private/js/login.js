@@ -13,7 +13,7 @@ $(function () {
                 required : true,
                 email:true,
                 remote:{
-                    url: '/ajax/checkEmail.do',
+                    url: '/ajax/loadUserByLoginName.do',
                     type:'post',
                     dataType:'json',
                     data:{

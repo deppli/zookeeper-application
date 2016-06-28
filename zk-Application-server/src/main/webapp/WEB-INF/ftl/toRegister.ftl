@@ -8,15 +8,11 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="/plugins/iCheck/square/blue.css">
-    <link rel="stylesheet" href="/private/css/register.css">
+    <link rel="stylesheet" href="/private/css/common.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -33,9 +29,9 @@
 
     <div class="register-box-body">
 
-        <form action="register.do" method="post">
+        <form action="/admin/register.do" method="post">
             <div class="form-group has-feedback">
-                <input  id="email" type="email" name="email"class="form-control" placeholder="邮件" >
+                <input  id="email" type="email" name="email" class="form-control" placeholder="邮件" >
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
