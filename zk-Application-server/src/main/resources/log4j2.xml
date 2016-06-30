@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="LOG_DIR">/Users/lishuhong</Property>
+        <Property name="PATTERN">[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%level] %c{1} - %msg%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT"> <!-- 定义类型为Console的Appender -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%level] %c{1} - %msg%n"/> <!-- 定义类型为Pattern的Layout -->
+        </Console>
+        <RollingRandomAccessFile name="File" fileName="${LOG_DIR}/file.log" filePattern="${LOG_DIR}/file-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout pattern="${PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingRandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

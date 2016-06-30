@@ -23,7 +23,16 @@ public class Dict {
 
     public static final String PASSWD = "passwd";
 
+    public static final String REPASSWD = "repasswd";
+
     public static final String CHECKEMAIL = "checkEmail";
+
+    public static final String FLAG = "flag";
+
+    public static final String TRUE = "true";
+
+    public static final String FALSE = "false";
+
 
 
 }

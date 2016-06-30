@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.zk.application.core.distconfigure.dict.Dict;
 import org.zk.application.core.distconfigure.impl.ZooKeeperReadConfigure;
 import org.zk.application.core.distconfigure.impl.ZooKeeperWriteConfigure;
 
@@ -43,20 +44,20 @@ public class Admin {
 	@RequestMapping("/toLogin")
 	public String toLogin(){
 
-		return "toLogin";
+		return Dict.TO_LOGIN;
 	}
 	
 	
 	@RequestMapping("/login")
 	public String login(HttpServletRequest httpServletRequest, ModelMap map){
 
-		return "main";
+		return Dict.MAIN;
 	}
 
 	@RequestMapping("/toRegister")
 	public String toRegister(){
 
-		return "toRegister";
+		return Dict.TO_REGISTER;
 	}
 
 	@RequestMapping("/register")

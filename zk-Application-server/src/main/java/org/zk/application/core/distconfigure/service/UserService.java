@@ -17,6 +17,9 @@ public class UserService {
 
 
     public int addUser(User user){
+        if (user == null) {
+            return 0;
+        }
         return  sqlSession.insert("user.addUser",user);
     }
 
