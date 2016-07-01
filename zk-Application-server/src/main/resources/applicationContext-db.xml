@@ -12,12 +12,6 @@
 	<context:component-scan base-package="org.zk.application.core.distconfigure.service" />
 	<context:annotation-config />
 
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location">
-			<value>classpath:jdbc.properties</value>
-		</property>
-	</bean>
 
 	<!-- 配置数据库连接池，使用dbcp -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"

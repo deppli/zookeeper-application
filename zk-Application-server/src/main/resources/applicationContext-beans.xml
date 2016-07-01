@@ -8,7 +8,15 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
-
+	<bean id="propertyConfigurer"
+		  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:mail.properties</value>
+			</list>
+		</property>
+	</bean>
 
 	<bean id="zooKeeperReadConfigure" class="org.zk.application.core.distconfigure.impl.ZooKeeperReadConfigure" init-method="init"/>
 	<bean id="zooKeeperWriteConfigure" class="org.zk.application.core.distconfigure.impl.ZooKeeperWriteConfigure" init-method="init"/>

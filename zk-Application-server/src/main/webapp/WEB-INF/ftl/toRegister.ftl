@@ -24,7 +24,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <b>register</b>
+        <b>DistConfigure</b>
     </div>
 
     <div class="register-box-body">
