@@ -2,6 +2,8 @@ package org.zk.application.core.distconfigure.pojo;
 
 import org.zk.application.core.distconfigure.enums.MailSendTypeEnum;
 
+import java.util.Map;
+
 /**
  * Created by lishuhong on 16/5/23.
  */
@@ -11,11 +13,11 @@ public class MailSendInfo {
 
     private String toAddress;
 
-
     private String subject;
 
-    private String content;
+    private Map<String,String> params;
 
+    private String ftlName;
 
     private String[] fileNames;
 
@@ -62,13 +64,19 @@ public class MailSendInfo {
         this.subject = subject;
     }
 
-    public String getContent() {
-        return content;
+    public Map<String, String> getParams() {
+        return params;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setParams(Map<String, String> params) {
+        this.params = params;
     }
 
+    public String getFtlName() {
+        return ftlName;
+    }
 
+    public void setFtlName(String ftlName) {
+        this.ftlName = ftlName;
+    }
 }

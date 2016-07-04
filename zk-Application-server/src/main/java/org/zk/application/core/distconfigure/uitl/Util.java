@@ -1,8 +1,12 @@
 package org.zk.application.core.distconfigure.uitl;
 
+import freemarker.template.Template;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import sun.misc.BASE64Encoder;
 
+import javax.annotation.Resource;
 import java.security.MessageDigest;
+import java.util.Map;
 
 /**
  * Created by lishuhong on 16/6/1.
@@ -17,4 +21,5 @@ public class Util {
         String newstr=base64en.encode(md5.digest(str.getBytes("utf-8")));
         return newstr;
     }
+
 }
