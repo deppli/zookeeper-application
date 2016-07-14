@@ -9,6 +9,25 @@
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 
+
+    <bean id="freemarkerConf"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:freemarker.properties" />
+    </bean>
+
+    <bean id="freeMarkerConfigurer"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="freemarkerSettings" ref="freemarkerConf" />
+        <property name="templateLoaderPath" value="classpath:templates" />
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="xml_escape" value-ref="xmlEscape" />
+            </map>
+        </property>
+    </bean>
+
+    <bean id="xmlEscape" class="freemarker.template.utility.XmlEscape" />
+
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="host">
             <value>${host}</value>

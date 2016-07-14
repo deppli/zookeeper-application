@@ -7,4 +7,5 @@ public class Constants {
     public static final String PARAMETER_ERROR = "参数有误,请重新填写";
     public static final String USER_ALREADYEXISTED = "用户已存在";
 
+    public static final String MAIL_FROMADDRESS = "justdepp@163.com";
 }
