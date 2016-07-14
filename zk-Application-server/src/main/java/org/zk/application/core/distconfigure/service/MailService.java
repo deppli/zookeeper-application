@@ -1,12 +1,11 @@
 package org.zk.application.core.distconfigure.service;
 
+import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-import org.zk.application.core.distconfigure.constants.Constants;
 import org.zk.application.core.distconfigure.enums.MailSendTypeEnum;
 import org.zk.application.core.distconfigure.pojo.MailSendInfo;
 
@@ -23,7 +22,7 @@ public class MailService {
     private JavaMailSender mailSender;
 
     @Resource
-    private FreeMarkerConfigurer freeMarkerConfigurer;
+    private Configuration freeMarkerConfiguration;
 
 
 
@@ -53,7 +52,7 @@ public class MailService {
 
 
     private String getHtml(String path, Map<String,String> params) throws Exception{
-        Template template = freeMarkerConfigurer.getConfiguration().getTemplate(path);
+        Template template =freeMarkerConfiguration.getTemplate(path);
         String resultHtml = FreeMarkerTemplateUtils.processTemplateIntoString(template, params);
         return resultHtml;
 
