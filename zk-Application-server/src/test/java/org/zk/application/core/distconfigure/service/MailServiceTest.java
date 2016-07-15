@@ -18,8 +18,7 @@ import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
-        "classpath*:applicationContext-*.xml",
-        "classpath*:dispatcher.xml"})
+        "classpath*:applicationContext-*.xml"})
 public class MailServiceTest {
     @Resource
     private MailService mailService;
@@ -38,5 +37,15 @@ public class MailServiceTest {
         mailService.sendMail(mailSendInfo);
     }
 
+    @Test
+    public void testSendTextMail() throws Exception{
+        MailSendInfo mailSendInfo = new MailSendInfo();
+        mailSendInfo.setFromAddress(Constants.MAIL_FROMADDRESS);
+        mailSendInfo.setToAddress("shuhong.li@dianping.com");
+        mailSendInfo.setSubject("验证邮件");
+        mailSendInfo.setText("test");
+        mailSendInfo.setType(MailSendTypeEnum.TEXT);
+        mailService.sendMail(mailSendInfo);
+    }
 
 }

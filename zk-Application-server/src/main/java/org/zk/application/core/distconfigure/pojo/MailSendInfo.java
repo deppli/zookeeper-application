@@ -2,6 +2,8 @@ package org.zk.application.core.distconfigure.pojo;
 
 import org.zk.application.core.distconfigure.enums.MailSendTypeEnum;
 
+import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,7 +21,9 @@ public class MailSendInfo {
 
     private String ftlName;
 
-    private String[] fileNames;
+    private Map<String,File> fileMap;
+
+    private String text;
 
     private MailSendTypeEnum type;
 
@@ -31,12 +35,21 @@ public class MailSendInfo {
         this.type = type;
     }
 
-    public String[] getFileNames() {
-        return fileNames;
+
+    public Map<String, File> getFileMap() {
+        return fileMap;
     }
 
-    public void setFileNames(String[] fileNames) {
-        this.fileNames = fileNames;
+    public void setFileMap(Map<String, File> fileMap) {
+        this.fileMap = fileMap;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getFromAddress() {
